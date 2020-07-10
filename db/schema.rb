@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_04_115006) do
+ActiveRecord::Schema.define(version: 2020_07_10_213836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "expenses", force: :cascade do |t|
+    t.float "housing"
+    t.float "insurance"
+    t.float "utilities"
+    t.float "retirement"
+    t.float "auto"
+    t.float "savings"
+    t.float "food"
+    t.float "entertainment"
+    t.float "phone"
+    t.float "misc"
+    t.bigint "monthly_budget_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["monthly_budget_id"], name: "index_expenses_on_monthly_budget_id"
+  end
+
+  create_table "monthly_budgets", force: :cascade do |t|
+    t.string "month"
+    t.string "year"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_monthly_budgets_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
@@ -39,10 +65,14 @@ ActiveRecord::Schema.define(version: 2020_07_04_115006) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.float "income"
+    t.float "balance"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "expenses", "monthly_budgets"
+  add_foreign_key "monthly_budgets", "users"
 end

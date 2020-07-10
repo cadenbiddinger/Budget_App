@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  housing: 1.5
+  insurance: 1.5
+  utilities: 1.5
+  retirement: 1.5
+  auto: 1.5
+  savings: 1.5
+  food: 1.5
+  entertainment: 1.5
+  phone: 1.5
+  misc: 1.5
+  monthly_budget: one
+
+two:
+  housing: 1.5
+  insurance: 1.5
+  utilities: 1.5
+  retirement: 1.5
+  auto: 1.5
+  savings: 1.5
+  food: 1.5
+  entertainment: 1.5
+  phone: 1.5
+  misc: 1.5
+  monthly_budget: two
