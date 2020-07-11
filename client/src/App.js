@@ -8,22 +8,29 @@ import { Switch, Route, } from 'react-router-dom';
 import { Container, } from "semantic-ui-react";
 import FetchUser from './components/FetchUser';
 import ProtectedRoute from './components/ProtectedRoute';
+import MyAccount from './components/MyAccount';
+import './App.css';
 
 const App = () => (
-<div>
+<div className="gradient">
+
   <Navbar />
   <FetchUser>
     <Container>
+    
       <Switch>
         <ProtectedRoute exact path="/" component={Home} />
+        <ProtectedRoute exact path="/myAccount" component={MyAccount} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route component={NoMatch} />
+      
       </Switch>
     </Container>
   </FetchUser>
 </div>
-)
+);
+
 
 
 

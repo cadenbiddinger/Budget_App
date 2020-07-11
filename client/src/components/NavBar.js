@@ -11,6 +11,13 @@ class Navbar extends React.Component {
     if (user) {
       return (
         <Menu.Menu position='right'>
+          <Link to='/myAccount'>
+          <Menu.Item
+            id = 'myAccount'
+            name = 'myAccount'
+            active={location.pathname === '/myAccount'}
+          />
+          </Link>
           <Menu.Item
             name='logout'
             onClick={ () => handleLogout(this.props.history) }
